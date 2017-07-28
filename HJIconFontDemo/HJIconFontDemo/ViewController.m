@@ -35,13 +35,13 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = CGRectMake(100, 100, 100, 50);
     [button setTitle:@"扫码" forState:UIControlStateNormal];
-    [button setImage:[[HJIconFontManager sharedManager] iconImageWithUnicodeText:@"\U0000e609" size:20 color:[UIColor blackColor]] forState:UIControlStateNormal];
+    [button setImage:[[HJIconFontManager sharedManager] fontImageWithUnicodeText:@"\U0000e609" size:20 color:[UIColor blackColor]] forState:UIControlStateNormal];
     [self.view addSubview:button];
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeSystem];
     button1.frame = CGRectMake(100, 160, 100, 50);
     [button1 setTitle:@"扫码" forState:UIControlStateNormal];
-    [button1 setImage:[[HJIconFontManager sharedManager] iconImageWithUnicodeText:@"\U0000e609" size:20 color:[UIColor blackColor]] forState:UIControlStateNormal];
+    [button1 setImage:[[HJIconFontManager sharedManager] fontImageWithUnicodeText:@"\U0000e609" size:20 color:[UIColor blackColor]] forState:UIControlStateNormal];
     [self.view addSubview:button1];
 }
 

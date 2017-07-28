@@ -13,6 +13,6 @@
 
 - (void)registerFontWithName:(NSString *)name fontURL:(NSURL *)fontURL;
 
-- (UIImage *)iconImageWithUnicodeText:(NSString *)unicodeText size:(CGFloat)size color:(UIColor *)color;
+- (UIImage *)fontImageWithUnicodeText:(NSString *)unicodeText size:(CGFloat)size color:(UIColor *)color;
 
 @end

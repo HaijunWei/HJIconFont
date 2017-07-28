@@ -9,7 +9,7 @@
 
 @interface HJIconFontManager ()
 
-@property (nonatomic, strong) NSCache *iconCache;
+@property (nonatomic, strong) NSCache *fontImageCache;
 
 @end
 
@@ -30,9 +30,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _iconCache = [NSCache new];
-        _iconCache.countLimit = 50;
-        _iconCache.totalCostLimit = 1024 * 5;
+        _fontImageCache = [NSCache new];
+        _fontImageCache.countLimit = 50;
+        _fontImageCache.totalCostLimit = 1024 * 5;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
@@ -42,7 +42,7 @@
 #pragma mark - Event response
 
 - (void)didReceiveMemoryWarning {
-    [self.iconCache removeAllObjects];
+    [self.fontImageCache removeAllObjects];
 }
 
 #pragma mark - Public method
@@ -59,16 +59,16 @@
     _currentFontName = name;
 }
 
-- (UIImage *)iconImageWithUnicodeText:(NSString *)unicodeText size:(CGFloat)size color:(UIColor *)color {
+- (UIImage *)fontImageWithUnicodeText:(NSString *)unicodeText size:(CGFloat)size color:(UIColor *)color {
     if (!color) { color = [UIColor blackColor]; }
-    UIImage *resultImage = [self.iconCache objectForKey:[self keyFromUnicodeText:unicodeText size:size color:color]];
+    UIImage *resultImage = [self.fontImageCache objectForKey:[self keyFromUnicodeText:unicodeText size:size color:color]];
     if (resultImage) { return resultImage; }
     
     UIFont *font = [UIFont iconFontOfSize:size];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(size, size), NO, [UIScreen mainScreen].scale);
     [unicodeText drawAtPoint:CGPointZero withAttributes:@{NSFontAttributeName:font, NSForegroundColorAttributeName:color}];
     resultImage = UIGraphicsGetImageFromCurrentImageContext();
-    [self.iconCache setObject:resultImage forKey:[self keyFromUnicodeText:unicodeText size:size color:color]];
+    [self.fontImageCache setObject:resultImage forKey:[self keyFromUnicodeText:unicodeText size:size color:color]];
     return resultImage;
 }
 
