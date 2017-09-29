@@ -35,7 +35,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame = CGRectMake(100, 100, 100, 50);
     [button setTitle:@"扫码" forState:UIControlStateNormal];
-    [button setImage:[[HJIconFontManager sharedManager] fontImageWithUnicodeText:@"\U0000e609" size:20 color:[UIColor blackColor]] forState:UIControlStateNormal];
+    [button setImage:HJ_ICONFONT(@"\U0000e609", 20, nil) forState:UIControlStateNormal];
     [self.view addSubview:button];
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeSystem];
